@@ -4,7 +4,7 @@ export const listMessage = async (req, res) => {
     try{
         const data = await MovieModel.find({})
 
-        res.status(201).json({
+        res.status(200).json({
             message : "list movie",
             data : data
         })
