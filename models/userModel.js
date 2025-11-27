@@ -1,27 +1,22 @@
 import mongoose, { mongo } from "mongoose"
-import UserModel from "./userModel.js";
 
-const MovieSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
     {
-        judul : {
+        username : {
             type : String,
             unique : true,
             required : true,
             trim : true
         },
-        tahunRilis : {
+        email : {
             type : String,
             required : true,
             trim : true
         },
-        sutradara : {
+        password : {
             type : String,
             required : true,
             trim : true
-        },
-        createdby: {
-            type : mongoose.Types.ObjectId,
-            ref : UserModel
         }
     },
     {
@@ -29,6 +24,6 @@ const MovieSchema = new mongoose.Schema(
     }
 );
 
-const MovieModel = mongoose.model("movies", MovieSchema);
+const UserModel = mongoose.model("User", UserSchema);
 
-export default MovieModel;
+export default UserModel;

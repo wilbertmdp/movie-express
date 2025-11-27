@@ -9,7 +9,7 @@
 	},
 	"item": [
 		{
-			"name": "inputmovie",
+			"name": "sign up",
 			"event": [
 				{
 					"listen": "test",
@@ -36,7 +36,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"judul\" : \"Dummy 3\",\r\n    \"tahunRilis\" : \"9999\",\r\n    \"sutradara\" : \"null\"\r\n}",
+					"raw": "{\r\n    \"username\": \"Anderson\",\r\n    \"email\": \"Wilbert@gmail.com\",\r\n    \"password\": \" Wil1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -44,7 +44,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/movie",
+					"raw": "http://localhost:3000/api/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -52,7 +52,7 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movie"
+						"signup"
 					],
 					"query": [
 						{
@@ -67,35 +67,24 @@
 			"response": []
 		},
 		{
-			"name": "getmovie",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
+			"name": "addMovies",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkyODAzYzBiZTAwYjk1NmYzZGIxYjE3IiwidXNlcm5hbWUiOiJBbmRlcnNvbiIsImlhdCI6MTc2NDIzMDEwOCwiZXhwIjoxNzY0MjMxMDA4fQ.RZFnuefZK_gR257l0WnNgu14A_dFeeKYNO8InSxdiEU",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\" : \"meme\",\n    \"email\" : \"meme@gmail.com\",\n    \"password\" : \"161616\"\n}",
+					"raw": "{\r\n    \"judul\" : \"boboiboy\",\r\n    \"tahunRilis\" : \"2005\",\r\n    \"sutradara\" : \"jarjit\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,7 +92,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/movie",
+					"raw": "http://localhost:3000/api/movies",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -111,15 +100,14 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movie"
+						"movies"
 					]
-				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "updatemovie",
+			"name": "ListMovies",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -133,13 +121,13 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikxpb25uZWxsIiwiZW1haWwiOiJMaW9ubmVsbEBnbWFpbC5jb20iLCJpYXQiOjE3NjExNTIzMzIsImV4cCI6MTc2MTE1NTkzMn0.m03ij8C3_8QdiLE09LKcPqiuqUwnWfrYCkTHeSk25do",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkyODAzYzBiZTAwYjk1NmYzZGIxYjE3IiwidXNlcm5hbWUiOiJBbmRlcnNvbiIsImlhdCI6MTc2NDIzMDEwOCwiZXhwIjoxNzY0MjMxMDA4fQ.RZFnuefZK_gR257l0WnNgu14A_dFeeKYNO8InSxdiEU",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\" : \"Lionnell\",\n    \"email\" : \"Ll@gmail.com\",\n    \"password\" : \"363636\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -147,7 +135,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/me",
+					"raw": "http://localhost:3000/api/movies",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -155,38 +143,7 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"me"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deletemovie",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/movie/68fe55dcaf61d24687757c28",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"movie",
-						"68fe55dcaf61d24687757c28"
+						"movies"
 					]
 				}
 			},
