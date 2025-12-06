@@ -8,7 +8,7 @@ export const movies = async (req, res) => {
       createdby: req.user?.user_id
     }).sort({ createdAt: -1 });
 
-    return res.status(200).json({
+    return res.status(201).json({
       message: "Daftar semua movie",
       data: movies,
     });
@@ -130,10 +130,11 @@ export const deleteMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie tidak ditemukan atau akses ditolak", data: null });
     }
 
-    return res.status(200).json({
+    return res.status(201).json({
       message: "Berhasil menghapus movie",
       data: deletedMovie,
     });
+    
   } catch (error) {
     return res.status(500).json({
       message: "Terjadi kesalahan pada server",
